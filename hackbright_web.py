@@ -7,6 +7,16 @@ import hackbright
 app = Flask(__name__)
 
 
+@app.route('/')
+def show_homepage():
+    """Homepage for the student projects"""
+
+    students = hackbright.show_all_students()
+    projects = hackbright.show_all_projects()
+
+    return render_template('homepage.html', students=students, projects=projects)
+
+
 @app.route("/student")
 def get_student():
     """Show information about a student."""

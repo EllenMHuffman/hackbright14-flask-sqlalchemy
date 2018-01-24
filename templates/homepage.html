@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Homepage</title>
+    <style>
+      div {
+        display: inline-block;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+
+    <div>
+      <h2>Students</h2>
+      <ul>
+        {% for student in students %}
+          <li> <a href="/student?github={{ student[2] }}">{{ student[0] }} {{ student[1] }} </a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div>
+      <h2>Projects</h2>
+      <ul>
+        {% for project in projects %}
+          <li><a href="/project?title={{ project[0] }}">{{ project[0] }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+  </body>
+</html>
