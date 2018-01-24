@@ -1,6 +1,6 @@
 """A web application for tracking projects, students, and student grades."""
 
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, redirect
 
 import hackbright
 
@@ -87,6 +87,34 @@ def display_project_form():
     hackbright.add_project(title, description, max_grade)
 
     return render_template('project_confirmation_page.html', title=title)
+
+
+@app.route("/assign-grade")
+def show_student_grade_form():
+    """Show form for assigning student grade"""
+
+    students = hackbright.show_all_students()
+    projects = hackbright.show_all_projects()
+
+    return render_template("assign_grade.html", students=students, projects=projects)
+
+
+@app.route("/assign-grade", methods=['POST'])
+def assign_student_grade():
+    """Update database with student grade on project"""
+
+    student = request.form.get('student')
+    project = request.form.get('project')
+    grade = request.form.get('grade')
+
+    if hackbright.get_grade_by_github_title(student, project) is not None:
+        hackbright.update_grade(student, project, grade)
+
+    else:
+        hackbright.assign_grade(student, project, grade)
+
+    return redirect('/student?github={student}'.format(student=student))
+
 
 
 if __name__ == "__main__":

@@ -139,8 +139,8 @@ def get_grade_by_github_title(github, title):
 
     row = db_cursor.fetchone()
 
-    print "Student {acct} in project {title} received grade of {grade}".format(
-        acct=github, title=title, grade=row[0])
+    # print "Student {acct} in project {title} received grade of {grade}".format(
+    #     acct=github, title=title, grade=row[0])
 
     return row
 
@@ -201,6 +201,22 @@ def get_grades_by_title(title):
             acct=row[0], grade=row[1], title=title)
 
     return rows
+
+
+def update_grade(github, title, grade):
+    """Update a student's grade on an assignment."""
+
+    QUERY = """
+        UPDATE grades
+        SET grade = :grade
+        WHERE student_github = :github AND project_title = :title
+        """
+
+    db_cursor = db.session.execute(QUERY, {'github': github,
+                                           'title': title,
+                                           'grade': grade})
+
+    db.session.commit()
 
 
 def handle_input():
