@@ -1,17 +1,9 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Homepage</title>
-    <style>
-      div {
-        display: inline-block;
-        vertical-align: top;
-      }
-    </style>
-  </head>
-  <body>
+{% extends 'base.html' %}
 
-    <div>
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <div class="homepage-div">
       <h2>Students</h2>
       <ul>
         {% for student in students %}
@@ -20,7 +12,7 @@
       </ul>
     </div>
 
-    <div>
+    <div class="homepage-div">
       <h2>Projects</h2>
       <ul>
         {% for project in projects %}
@@ -31,6 +23,4 @@
     <p>
       <a href='/assign-grade'>Update a student grade for project</a>
     </p>
-
-  </body>
-</html>
+{% endblock %}

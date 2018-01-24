@@ -1,9 +1,8 @@
-<!doctype html>
-<html>
-  <head>
-    <title>Assign Grade</title>
-  </head>
-  <body>
+{% extends 'base.html' %}
+
+{% block title %}Assign Grade{% endblock %}
+
+{% block content %}
     <h1>Assign a grade to a student's project</h1>
     <form action='/assign-grade' method='POST'>
       <label>Select a student:
@@ -25,5 +24,4 @@
       </label><br>
       <input type="submit" value="Assign Grade">
     </form>
-  </body>
-</html>
+{% endblock %}
