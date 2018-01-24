@@ -8,8 +8,8 @@
 
     <p>GitHub Account: {{ github }}</p>
     <p>
-      {% for row in rows %}
-      <li><a href="/project?title={{row[0]}}">Project: {{ row[0] }}</a>, Grade: {{ row[1]}}</li>
+      {% for title, grade in rows %}
+      <li><a href="/project?title={{ title }}">Project: {{ title }}</a>, Grade: {{ grade }}</li>
       {% endfor %}
     </p>
 

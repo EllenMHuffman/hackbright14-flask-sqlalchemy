@@ -89,6 +89,22 @@ def make_new_student(first_name, last_name, github):
         first=first_name, last=last_name)
 
 
+def add_project(title, description, max_grade):
+    """Inserts new project to db"""
+
+    QUERY = """
+        INSERT INTO projects (title, description, max_grade)
+            VALUES (:title, :description, :max_grade)
+        """
+
+    db.session.execute(QUERY, {'title': title,
+                               'description': description,
+                               'max_grade': max_grade})
+    db.session.commit()
+
+    print "Successfully added project"
+
+
 def get_project_by_title(title):
     """Given a project title, print information about the project."""
 

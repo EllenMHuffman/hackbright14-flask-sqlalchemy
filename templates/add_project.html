@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Add Project</title>
+  </head>
+  <body>
+    <form action="/project_add" method='POST'>
+      <label>Enter the project title:
+          <input name="title" type="text">
+      </label>
+      <br>
+      <label>Enter project description:
+          <textarea rows="4" cols="50" name="description"></textarea>
+      </label>
+      <br>
+      <label>Enter the max grade:
+          <input name="max_grade" type="text">
+      </label>
+      <br>
+      <input type="submit" value="Add Project">
+    </form>
+  </body>
+</html>

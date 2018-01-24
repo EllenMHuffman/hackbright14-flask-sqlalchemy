@@ -8,8 +8,8 @@
     <p>Description: {{ row[1] }}</p>
     <p>Max Grade: {{ row[2] }}</p>
     <p>
-        {% for row in grades_rows %}
-        <li><a href="/student?github={{ row[0] }}">Student: {{ row[0] }}</a>, Grade: {{ row[1] }}</li>
+        {% for github, grade in grades_rows %}
+        <li><a href="/student?github={{ github }}">Student: {{ github }}</a>, Grade: {{ grade }}</li>
         {% endfor %}
 </body>
 </html>
